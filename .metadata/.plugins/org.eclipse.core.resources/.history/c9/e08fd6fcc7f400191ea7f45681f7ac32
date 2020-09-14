@@ -1,0 +1,152 @@
+
+/**
+* ADT MyStack: Private Part<br>. 
+* The class implements all the operations available in MyStack<br>
+*/
+public class MyDynamicStack implements MyStack {
+
+	//--------------------------------------------------
+	// Attributes
+	//--------------------------------------------------
+		private MyNode head;
+		
+	//-------------------------------------------------------------------
+	// Basic Operation --> Check if MyStack is empty: myCreateEmpty
+	//-------------------------------------------------------------------	
+	//public myStack myCreateEmpty(){}
+	
+	public MyDynamicStack(){
+		this.head = null;
+	}
+
+	//-------------------------------------------------------------------
+	// Basic Operation --> Check if MyStack is empty: isEmpty
+	//-------------------------------------------------------------------	
+
+	public boolean isEmpty(){
+		//-----------------------------
+		//Output Variable --> InitialValue
+		//-----------------------------
+		boolean res = true; 
+		
+		//-----------------------------
+		//SET OF OPS
+		//-----------------------------
+
+		//-----------------------------
+		// I. SCENARIO IDENTIFICATION
+		//-----------------------------
+		//1. The stack is empty
+		//2. The stack isn't empty
+
+		//-----------------------------
+		// II. SCENARIO IMPLEMENTATION 
+		//-----------------------------
+		if(head != null) {
+			res = false;
+		}
+		
+		//-----------------------------
+		//Output Variable --> Return FinalValue
+		//-----------------------------
+		return res;
+	}
+	
+	//-------------------------------------------------------------------
+	// Basic Operation (Partial) --> Get first element from the top of MyStack and removes it: pop
+	//-------------------------------------------------------------------
+
+	public int pop(){
+		//-----------------------------
+		//Output Variable --> InitialValue
+		//-----------------------------
+		int res = -1;
+		
+		//-----------------------------
+		//SET OF OPS
+		//-----------------------------
+
+		//-----------------------------
+		// I. SCENARIO IDENTIFICATION
+		//-----------------------------
+		//1. The stack is empty and you can't pop
+		//2. The stack isn't empty and you pop the item
+
+		//-----------------------------
+		// II. SCENARIO IMPLEMENTATION 
+		//-----------------------------
+		boolean empty = isEmpty();
+		if(empty == false) {
+			res = head.getInfo();
+			head = head.getNext();
+		}
+		
+		//-----------------------------
+		//Output Variable --> Return FinalValue
+		//-----------------------------
+		return res;
+	}
+
+	//-------------------------------------------------------------------
+	// Basic Operation (Partial) --> Add element to the top of MyStack: push 
+	//-------------------------------------------------------------------
+	
+	public void push(int element){
+		//-----------------------------
+		//SET OF OPS
+		//-----------------------------
+	
+		//-----------------------------
+		// I. SCENARIO IDENTIFICATION
+		//-----------------------------
+		//1. Stack empty
+		//2. Stack isn't empty
+
+		//-----------------------------
+		// II. SCENARIO IMPLEMENTATION 
+		//-----------------------------
+
+		boolean empty = isEmpty();
+		
+		MyNode node = new MyNode(element, null);
+		if(empty == false) {
+			node.setNext(head);
+			head.getNext();
+		}
+		else {
+			head = node;
+			}
+	}
+	
+	
+	//-------------------------------------------------------------------
+	// Basic Operation (Partial) --> prints all the elements from MyStack: print
+	//-------------------------------------------------------------------
+	
+	public void print(){
+
+		//-----------------------------
+		//SET OF OPS
+		//-----------------------------
+
+		//-----------------------------
+		// I. SCENARIO IDENTIFICATION
+		//-----------------------------
+		//1. Stack is not empty; Stack is printed
+		//2. Stack is empty; An error is printed
+		
+		//-----------------------------
+		// II. SCENARIO IMPLEMENTATION 
+		//-----------------------------
+		MyNode newHead = head;
+		boolean empty = isEmpty();
+		while(empty == false) {
+			head.getNext();
+			System.out.println(newHead.getInfo());
+			empty = isEmpty();
+		}
+
+	}
+	
+	
+}
